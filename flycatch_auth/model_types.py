@@ -29,17 +29,6 @@ class UserType(TypedDict):
     password: str
 
 
-def api_response(code: int, message: str, status: str, data=None):
-    """Format API response."""
-    return {
-        "code": code,
-        "timestamp": datetime.utcnow().isoformat() + "Z",
-        "message": message,
-        "status": status,
-        "data": data or {},
-    }
-
-
 class CredentialChecker:
     def __init__(self):
         pass
@@ -49,7 +38,7 @@ class CredentialChecker:
         return input_password == user_password
 
 
-class SessionConfig(TypedDict, total=False):
+class AuthCoreSessionConfig(TypedDict, total=False):
     session_key: str
     session_expiration: int
     enabled: bool
@@ -66,3 +55,14 @@ class AuthCoreJwtConfig(TypedDict, total=False):
     expiresIn: str
     refresh: bool
     prefix: str
+
+
+def api_response(code: int, message: str, status: str, data=None):
+    """Format API response."""
+    return {
+        "code": code,
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "message": message,
+        "status": status,
+        "data": data or {},
+    }

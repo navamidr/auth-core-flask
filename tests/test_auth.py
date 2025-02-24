@@ -1,6 +1,6 @@
 import pytest
 from flask import Flask, request, jsonify
-from flycatch_auth import auth, AuthCoreJwtConfig, IdentityService, Identity
+from flycatch_auth import auth, AuthCoreJwtConfig, IdentityService, Identity, AuthCoreSessionConfig
 
 
 class MockUserService(IdentityService):
@@ -89,8 +89,6 @@ def test_refresh_token(client):
         "/auth/jwt/login", json={"username": "testuser", "password": "password123"}
     )
     refresh_token = login_response.json["data"]["refresh_token"]
-    print(refresh_token)
-
     refresh_response = client.post(
         "/auth/jwt/refresh",
         headers={"Authorization": f"Bearer {refresh_token}"},

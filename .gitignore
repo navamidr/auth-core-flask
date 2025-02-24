@@ -6,3 +6,4 @@ services/*.py[cod]
 tests/__pycache__/
 tests/*.py[cod]
 routes/__pycache__/
+env/

@@ -1,6 +1,6 @@
 from .auth import AuthCore 
-from .model_types import Identity, IdentityService, CredentialChecker
-from .services import AuthCoreJwtConfig
+from .model_types import Identity, IdentityService, CredentialChecker, AuthCoreSessionConfig ,AuthCoreJwtConfig
+
 
 auth = AuthCore()
 
